@@ -2,9 +2,29 @@
 
 ------
 
-[TOC]
+- [GitNote](#gitnote)
+  * [1. 创建仓库](#1-----)
+      - [git init](#git-init)
+      - [git clone](#git-clone)
+  * [2. 工作区域和文件状态](#2----------)
+      - [git status](#git-status)
+  * [3. 添加和提交文件](#3--------)
+      - [git add](#git-add)
+      - [git commit](#git-commit)
+  * [4. 撤销修改和版本回退](#4----------)
+  * [5. 查询和列出文件](#5--------)
+      - [git ls-filess](#git-ls-filess)
+  * [6. 删除文件](#6-----)
+  * [7. 分支相关](#7-----)
+  * [8. 远程仓库相关](#8-------)
+      - [git remote](#git-remote)
+        * [(1) 添加远程仓库](#-1--------)
+        * [(2) 查看远程仓库详细信息](#-2------------)
+        * [(3) 删除远程仓库](#-3--------)
+        * [(4) 重命名远程仓库](#-4---------)
+        * [(5) 修改远程仓库URL](#-5--------url)
 
-
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 ## 1. 创建仓库
 
