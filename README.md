@@ -1,5 +1,11 @@
 # GitNote
 
+------
+
+[TOC]
+
+
+
 ## 1. 创建仓库
 
 
@@ -44,17 +50,14 @@ git有三个区域， 工作区，暂存区, 本地仓库
 
 
 
-文件有四个状态:
+在 Git 中，每个文件都可能处于以下基本状态之一：
 
-Untrack: 在工作区中新添加一个文件，但却没有使用`git add`命令, 该文件就处于Untrack状态
-
-UnModified:
-
-Modified: 
-
-Staged:
-
-
+| 状态名称             | 解释                                    | 位置     |
+| -------------------- | --------------------------------------- | -------- |
+| 未跟踪 (`UnTracked`) | 新建的文件，还没有被Git 跟踪            |          |
+| 已暂存 (`staged`)    | 文件已经被执行`git add`命令             | 暂存区   |
+| 已修改 (`Modified`)  | 文件内容已经被修改, 但还未执行`git add` | 工作区   |
+| 已提交 (`commited`)  | 文件已被提交到本地仓库。                | 本地仓库 |
 
 
 
@@ -68,9 +71,7 @@ Staged:
 
 
 
-#### git ls-files
 
-`git ls-files` 是 Git 中一个**文件列表查询命令**，它的作用是列出**暂存区中的文件**。
 
 
 
@@ -83,11 +84,11 @@ Staged:
 基本语法：
 
 ```bash
-git add <文件名>        # 添加单个文件
+git add <FileName>     # 添加单个文件
 git add .              # 添加所有修改的文件
 git add -A             # 添加所有修改和删除的文件
 git add --all          # 和 -A 等价
-git add <目录名>        # 添加指定目录下的所有文件
+git add <DirName>      # 添加指定目录下的所有文件
 git add "*.cpp"        # 添加指定类型文件
 ```
 
@@ -114,11 +115,122 @@ git add "*.cpp"        # 添加指定类型文件
 
 ## 5. 查询和列出文件
 
-#### git ls-files
+#### git ls-filess
+
+`git ls-files` 是 Git 中一个**文件列表查询命令**
+
+基本语法
+
+```bash
+git ls-files [选项] [<路径>...]
+```
+
+
+
+常用场景
+
+| 命令            | 作用                                              |
+| :-------------- | ------------------------------------------------- |
+| git ls-files    | 列出暂存区中所有文件(处于`staged状态`的文件)      |
+| git ls-files -m | 列出所有处于`Modified`状态的文件（-m/--modified） |
+| git ls-files -o | 列出所有处于`UnTrack`状态的文件 (-o/--others)     |
+
+
 
 
 
 ## 6. 删除文件
+
+`git rm`命令用于删除文件
+
+**注意: 使用git rm 无法删除处于`UnTracked状态`**的文件。
+
+基本语法
+
+```bash
+git rm [选项] <文件名>
+```
+
+
+
+下面是一些具体示例:
+
+| 命令                    | 作用 / 影响区域                                 |
+| ----------------------- | ----------------------------------------------- |
+| git rm -f filename      | 删除暂存区和工作区还有本地磁盘上的文件          |
+| git rm --cached fiename | 从暂存区中删除文件, 并将文件变为`Untracked`状态 |
+|                         |                                                 |
+
+
+
+## 7. 分支相关
+
+
+
+## 8. 远程仓库相关
+
+#### git remote
+
+`git remote`命令主要有以下作用:
+
+- 添加远程仓库地址
+- 查看远程仓库信息
+- 删除远程仓库
+- 重命名远程仓库
+- 修改远程仓库 URL
+
+##### (1) 添加远程仓库
+
+```
+git remote add <远程仓库别名> <远程仓库URL>
+```
+
+- 远程仓库别名: 在本地计算机上对远程仓库起的别名,默认是`origin`
+- 远程仓库的URL: `git@github.com:gls1018/GitNode.git`
+
+##### (2) 查看远程仓库详细信息
+
+示例:
+
+```bash
+git remote show origin
+```
+
+输出:
+
+```cpp
+* remote origin
+  Fetch URL: git@github.com:gls1018/CPPNote.git
+  Push  URL: git@github.com:gls1018/CPPNote.git
+  HEAD branch: (unknown)
+```
+
+- Fetch URL: 拉取代码的地址
+- Push URL: 推送代码的地址
+
+##### (3) 删除远程仓库
+
+```bash
+git remote remove origin
+```
+
+这个命令只会删除远程仓库的别名,不会删除实际的远程仓库.
+
+##### (4) 重命名远程仓库
+
+```bash
+git remote rename orgin NewName
+```
+
+##### (5) 修改远程仓库URL
+
+如果远程仓库的地址变了，可以参考如下示例
+
+```bash
+git remote set-url orgin git@github.com:gls1018@GitNote111.git
+```
+
+
 
 
 
