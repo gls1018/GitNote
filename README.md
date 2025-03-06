@@ -2,29 +2,27 @@
 
 ------
 
-- [GitNote](#gitnote)
-  * [1. 创建仓库](#1-----)
+- [GitNote](#gitnote)- [GitNote](#gitnote)
+  - [1. 创建仓库](#1-创建仓库)
       - [git init](#git-init)
       - [git clone](#git-clone)
-  * [2. 工作区域和文件状态](#2----------)
+  - [2. 工作区域和文件状态](#2-工作区域和文件状态)
       - [git status](#git-status)
-  * [3. 添加和提交文件](#3--------)
+  - [3. 添加和提交文件](#3-添加和提交文件)
       - [git add](#git-add)
       - [git commit](#git-commit)
-  * [4. 撤销修改和版本回退](#4----------)
-  * [5. 查询和列出文件](#5--------)
+  - [4. 撤销修改和版本回退](#4-撤销修改和版本回退)
+  - [5. 查询和列出文件](#5-查询和列出文件)
       - [git ls-filess](#git-ls-filess)
-  * [6. 删除文件](#6-----)
-  * [7. 分支相关](#7-----)
-  * [8. 远程仓库相关](#8-------)
+  - [6. 删除文件](#6-删除文件)
+  - [7. 分支相关](#7-分支相关)
+  - [8. 远程仓库相关](#8-远程仓库相关)
       - [git remote](#git-remote)
-        * [(1) 添加远程仓库](#-1--------)
-        * [(2) 查看远程仓库详细信息](#-2------------)
-        * [(3) 删除远程仓库](#-3--------)
-        * [(4) 重命名远程仓库](#-4---------)
-        * [(5) 修改远程仓库URL](#-5--------url)
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+        - [(1) 添加远程仓库](#1-添加远程仓库)
+        - [(2) 查看远程仓库详细信息](#2-查看远程仓库详细信息)
+        - [(3) 删除远程仓库](#3-删除远程仓库)
+        - [(4) 重命名远程仓库](#4-重命名远程仓库)
+        - [(5) 修改远程仓库URL](#5-修改远程仓库url)
 
 ## 1. 创建仓库
 
@@ -201,14 +199,73 @@ git rm [选项] <文件名>
 
 ##### (1) 添加远程仓库
 
+格式:
+
 ```
-git remote add <远程仓库别名> <远程仓库URL>
+git remote add <远程仓库名称> <远程仓库URL>
 ```
 
-- 远程仓库别名: 在本地计算机上对远程仓库起的别名,默认是`origin`
-- 远程仓库的URL: `git@github.com:gls1018/GitNode.git`
+例如:
 
-##### (2) 查看远程仓库详细信息
+```bash
+git remote add origin git@github.com:gls1018/GitNote.git
+```
+
+`origin`是你给远程仓库起的名字(默认是origin)，后面的URL是远程仓库的地址。
+
+##### (2) 修改远程仓库URL
+
+如果远程仓库的URL发生了变化或者你需要将远程仓库迁往另一个地址，可以使用`git remote set-url`命令。
+
+格式:
+
+```bash
+git remote set-url <远程仓库名称> <新的URL>
+```
+
+例如:
+
+```bash
+git remote set-url origin git@github.com:gls1018/NewRepo.git
+```
+
+
+
+##### (3) 删除远程仓库
+
+如果你不需要某个远程仓库，或者需要删除它,可以使用`git remote remove`命令。
+
+格式:
+
+```bash
+git remote remove <远程仓库名称>
+```
+
+例如:
+
+```bash
+git remote remove origin
+```
+
+这个命令只会删除远程仓库的别名,不会删除实际的远程仓库.
+
+##### (4) 重命名远程仓库
+
+如果你想更改远程仓库的名称,可以使用`git remote rename`命令。
+
+格式:
+
+```bash
+git remote rename <旧的远程仓库名称> <新的远程仓库名称>
+```
+
+例如:
+
+```bash
+git remote rename origin NewName
+```
+
+##### (5) 查看远程仓库详细信息
 
 示例:
 
@@ -227,28 +284,6 @@ git remote show origin
 
 - Fetch URL: 拉取代码的地址
 - Push URL: 推送代码的地址
-
-##### (3) 删除远程仓库
-
-```bash
-git remote remove origin
-```
-
-这个命令只会删除远程仓库的别名,不会删除实际的远程仓库.
-
-##### (4) 重命名远程仓库
-
-```bash
-git remote rename orgin NewName
-```
-
-##### (5) 修改远程仓库URL
-
-如果远程仓库的地址变了，可以参考如下示例
-
-```bash
-git remote set-url orgin git@github.com:gls1018@GitNote111.git
-```
 
 
 
